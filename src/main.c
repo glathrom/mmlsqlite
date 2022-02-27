@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <inttypes.h>
 
 #include "parse.h"
 
@@ -9,22 +10,22 @@
 
 int main(int argc, char **argv){
 
-    FILE *fp;
-    int numNewLines;
+    FILEINFO_t meta;
+    
 
     if( argc < 2 ){
         fprintf(stderr, "Usage: parse <filename>\n");
         exit(0);
-    } else if( (fp = fopen(argv[1], "r")) == NULL ){
+    } else if( (meta.fp = fopen(argv[1], "r")) == NULL ){
         fprintf(stderr, "%s\n", strerror(errno));
         exit(1);
     }
 
+    meta.maxlinesize = findMaxLineSize(&meta);
+    parseTitles(&meta);
 
-    numNewLines = findNewLines(fp);  
-    printf("Number of newlines found = %d\n", numNewLines);
 
-    fclose(fp);
+    fclose(meta.fp);
 
     return 0;
 }
