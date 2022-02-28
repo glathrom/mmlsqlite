@@ -13,7 +13,12 @@ add_compile_options(-ggdb)
 # compiled libraries
 ######################
 
-#add_library(booger SHARED booger.cpp)
+find_library(thread pthread REQUIRED)
+find_library(math m REQUIRED)
+find_library(dynamic dl REQUIRED)
+
+add_library(sqlite STATIC sqlite3.c)
+target_link_libraries(sqlite PUBLIC pthread m dl)
 
 ######################
 # executables 

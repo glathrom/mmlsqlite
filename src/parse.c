@@ -60,8 +60,9 @@ void parseTitles(FILEINFO_t *F){
 
     token = strtok(buf,DELIMITER);
     printf("%s\n", token);
-    while((token = strtok(NULL,DELIMITER)) != NULL)
+    while(((token = strtok(NULL,DELIMITER)) != NULL) && (strcmp(token,NEWLINE) != 0)){
         printf("%s\n", token);
+    }
 
     free(buf);
 }

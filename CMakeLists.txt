@@ -15,4 +15,4 @@ message(STATUS "CMAKE_RUNTIME_OUTPUT_DIRECTORY =  ${CMAKE_RUNTIME_OUTPUT_DIRECTO
 
 
 add_subdirectory(src)
-#add_subdirectory(test)
+add_subdirectory(tests)

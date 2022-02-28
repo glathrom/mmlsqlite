@@ -19,6 +19,12 @@ typedef struct FILEINFO {
     uint64_t maxlinesize;
 } FILEINFO_t;
 
+typedef struct AssignmentInfo {
+    char *title;
+    char *coverage;
+    int weight;
+} AssignmentInfo_t;
+
 uint64_t findMaxLineSize(FILEINFO_t *);
 void readLine(char *, FILEINFO_t *);
 void parseTitles(FILEINFO_t *);
